@@ -5,8 +5,10 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 BGC-Pipeline 是一个用于批量处理生物合成基因簇（Biosynthetic Gene Cluster, BGC）分析的完整自动化流程 Skill。它封装了从基因组注释、BGC 挖掘、去冗余到定量分析的全过程，旨在为研究人员提供一站式的分析解决方案。
+<p align="center">
+  <img src="/workflow.png" alt="BGC-Pipeline Workflow" width="750">
+</p>
 
----
 
 ## ✨ Features (核心特性)
 
