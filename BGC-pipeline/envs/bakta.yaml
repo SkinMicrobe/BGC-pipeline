@@ -1,0 +1,9 @@
+name: bakta
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - bakta>=1.8
+  - aria2

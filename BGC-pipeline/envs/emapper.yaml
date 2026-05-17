@@ -1,0 +1,10 @@
+name: emapper
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - eggnog-mapper>=2.1
+  - diamond>=2.0
+  - hmmer

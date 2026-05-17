@@ -1,0 +1,103 @@
+# BGC Pipeline 默认参数配置
+# 用户需要根据自己环境修改数据库路径
+
+# Conda环境名称
+conda_envs:
+  bakta: "bakta"
+  antismash: "antismash"
+  bigmap: "bigmap"
+  meta: "meta"           # metaEUK (真核模式)
+  deepbgc: "deepbgc"     # deepBGC (原核可选)
+  emapper: "emapper"     # eggNOG mapper (原核可选)
+
+# 数据库路径
+databases:
+  # Bakta数据库路径
+  bakta_db: "/mnt/cephfs/s2z1/db/bakta/full/db"
+
+  # BiG-Map Pfam数据库路径
+  pfam_hmm: "/mnt/cephfs/s2z2/SProject/02-meta/13-metabolism/bigmap/BiG-SCAPE/Pfam-A.hmm/Pfam-A.hmm"
+
+  # eggNOG mapper数据库路径
+  eggnog_db: "/mnt/cephfs/s2z1/db/eggnog_db_new"
+
+  # metaEUK UniRef50数据库（真核模式）
+  uniref50_db: "/mnt/cephfs/s2z1/db/uniref50/uniref50_mmseqs"
+
+# 默认线程数
+default_threads:
+  bakta: 32
+  antismash: 32
+  bigmap_family: 48
+  bigmap_map: 36
+  metaeuk: 16
+
+# 原核模式文件命名模式
+prokaryote:
+  # 输入fasta文件名模式（支持通配符）
+  input_fasta_pattern: "*.fa"
+
+  # Bakta输出文件检查
+  bakta_output_check: ".tsv"
+
+  # antiSMASH输出文件检查
+  antismash_output_check: "index.html"
+
+  # fastq文件命名格式（简化版：以.fastq.gz结尾）
+  # 支持单端和双端数据
+  fastq_pattern: "*.fastq.gz"
+
+  # deepBGC完成检查文件
+  deepbgc_check: "task.complete"
+
+  # eggNOG mapper完成检查文件
+  eggnog_check: ".emapper.annotations"
+
+  # BiG-Map family完成检查文件
+  bigmap_family_check: "BiG-MAP.GCF.bed"
+
+  # BiG-Map map完成检查文件
+  bigmap_map_check: "BiG-MAP.counts.csv"
+
+# 真核模式文件命名模式
+eukaryote:
+  # 输入MAG文件模式
+  input_maga_pattern: "*.fa.gz"
+
+  # metaEUK完成标记文件
+  metaeuk_check: ".task.complete"
+
+  # antiSMASH输出文件检查
+  antismash_output_check: "index.html"
+
+  # metaEUK蛋白预测输出前缀
+  metaeuk_output_prefix: "predicted_proteins"
+
+  # metaEUK GFF文件名
+  metaeuk_gff: "predicted_proteins.gff"
+
+  # 去重CDS GFF文件名
+  dedup_cds_gff: "predicted_proteins_CDS.gff"
+
+# 临时文件目录
+tmp_dir: "/mnt/cephfs/s2z2/SProject/02-meta/13-metabolism/tmp"
+
+# antiSMASH参数
+antismash_params:
+  prokaryote:
+    taxon: "bacteria"
+    genefinding_tool: "none"
+    extra_args: "--cb-general --cb-knownclusters --cb-subclusters --asf --pfam2go"
+
+  eukaryote:
+    taxon: "fungi"
+    genefinding_tool: "none"
+    genefinding_gff3: true
+    extra_args: ""
+
+# BiG-Map参数
+bigmap_params:
+  family:
+    method: "bigscape"  # 比对模式
+  map:
+    sensitivity: "sensitive-local"  # 比对敏感度

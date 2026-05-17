@@ -1,0 +1,10 @@
+name: deepbgc
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - deepbgc
+  - prodigal
+  - biopython
